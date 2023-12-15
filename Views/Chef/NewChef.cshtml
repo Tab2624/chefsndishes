@@ -1,0 +1,25 @@
+<div>
+    <div>
+        <p><a asp-action="Index" asp-controller="Chef">Chefs</a> | <a asp-action="AllDishes" asp-controller="Dish">Dishes</a> | Add a Chef | <a asp-controller="Dish" asp-action="NewDish">New dish</a>
+        </p>
+        <h2>Check out our roster of chefs!</h2>
+        <hr>
+    </div>
+    @model Chef
+    <form asp-action="CreateChef" asp-controller="Chef" method="post">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName">
+        <span asp-validation-for="FirstName"></span><br>
+
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName">
+        <span asp-validation-for="LastName"></span><br>
+
+        <label asp-for="DOB"></label>
+        <input asp-for="DOB">
+        <span asp-validation-for="DOB"></span>
+
+        <button class="btn btn-success">Add Chef</button>
+    </form>
+
+</div>

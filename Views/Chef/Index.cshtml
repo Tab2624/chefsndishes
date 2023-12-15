@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div>
+        <p>Chefs | <a asp-action="AllDishes" asp-controller="Dish">Dishes</a> | <a asp-action="AddChef">Add a Chef</a> |<a asp-controller="Dish" asp-action="NewDish">New dish</a></p>
+        <h2>Check out our roster of chefs!</h2>
+        <hr>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col"># of Dishes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Chef c in Model)
+            {
+                <tr>
+                    <td> <a asp-action="#">@c.FirstName @c.LastName</a></td>
+                    <td>@c.DOB.ToShortDateString()</td>
+                    <td> @c.Dishes.Count</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "New Dish";
+}
+<div>
+        <p><a asp-action="Index" asp-controller="Chef">Chefs</a>| <a asp-action="AllDishes" asp-controller="Dish">Dishes</a> | <a asp-action="AddChef" asp-controller="Chef">Add a Chef</a> | Add a Dish</p>
+        <h2>Add a dish</h2>
+        <hr>
+    </div>
+@model Dish
+<form asp-action="CreateDish" asp-controller="Dish" method="post">
+    <div class="d-flex">
+        <div>
+            <label asp-for="DishName"></label>
+            <input asp-for="DishName">
+            <span class="text-danger" asp-validation-for="DishName"></span><br>
+
+            <label asp-for="Calories"></label>
+            <input asp-for="Calories">
+            <span class="text-danger" asp-validation-for="Calories"></span><br>
+        </div>
+        <div>
+            <label asp-for="Tastiness"></label>
+            <select asp-for="Tastiness">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <span class="text-danger" asp-validation-for="Tastiness"></span>
+        </div>
+
+        <label asp-for="ChefId"></label>
+        <select asp-for="ChefId">
+            @foreach(Chef c in ViewBag.ChefsFromDb)
+            {
+                <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+            }
+        </select>
+
+        
+
+    </div>
+    <div>
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+

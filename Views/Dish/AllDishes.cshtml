@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Dishes";
+}
+<div>
+        <p><a asp-controller="Chef" asp-action="Index">Chefs</a>| Dishes | <a asp-action="AddChef" asp-controller="Chef">Add a Chef</a> |<a asp-controller="Dish" asp-action="NewDish">New dish</a></p>
+<h2>Yum! Check out our tasty dishes</h2>
+        <hr>
+    </div>
+<hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Chef</th>
+                <th scope="col">Tastiness</th>
+                <th scope="col">Calories</th>
+            </tr>
+        </thead>
+        <tbody>
+@model List<Dish>
+    @foreach (Dish d in Model)
+    {
+        <tr>
+            <td>@d.DishName</td>
+            <td>@d.ChefId</td>
+            <td>@d.Tastiness</td>
+            <td>@d.Calories</td>
+        </tr>
+    }
+            
+        </tbody>
+    </table>
